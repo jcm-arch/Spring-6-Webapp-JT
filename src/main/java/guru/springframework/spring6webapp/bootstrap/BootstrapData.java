@@ -5,7 +5,7 @@ import guru.springframework.spring6webapp.domain.Book;
 import guru.springframework.spring6webapp.domain.Publisher;
 import guru.springframework.spring6webapp.repositories.AuthorRepository;
 import guru.springframework.spring6webapp.repositories.BookRepository;
-import guru.springframework.spring6webapp.repositories.ProductRepository;
+import guru.springframework.spring6webapp.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,13 +17,13 @@ public class BootstrapData implements CommandLineRunner {
 
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
-    private final ProductRepository productRepository;
+    private final PublisherRepository publisherRepository;
 
     public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository,
-                         ProductRepository publisherRepository) {
+                         PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
-        this.productRepository = publisherRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     @Override
@@ -63,9 +63,9 @@ public class BootstrapData implements CommandLineRunner {
         Publisher publisher = new Publisher();
         publisher.setPublisherName("My Publisher");
         publisher.setAddress("123 Main");
-        productRepository.save(publisher);
+        publisherRepository.save(publisher);
 
-        System.out.println("Publisher Count: " + productRepository.count());
+        System.out.println("Publisher Count: " + publisherRepository.count());
     }
 }
 
